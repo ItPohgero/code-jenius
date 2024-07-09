@@ -15,7 +15,6 @@ export type GroupedContacts = {
 	[key: string]: ContactDataType[];
 };
 
-
 export type ContactDataCreateType = {
 	firstName: string;
 	lastName: string;

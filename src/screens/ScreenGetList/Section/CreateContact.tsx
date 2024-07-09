@@ -1,12 +1,12 @@
-import type { RootState } from "@/shared/store";
-import React from "react";
-import { type SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import type { ContactDataCreateType } from "../Main.types";
-import { If, Then } from "react-if";
 import { Endpoint } from "@/services/endpoint";
 import storeData from "@/services/storeData";
 import { changeContact } from "@/shared/slice/contact";
+import type { RootState } from "@/shared/store";
+import React from "react";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { If, Then } from "react-if";
+import { useDispatch, useSelector } from "react-redux";
+import type { ContactDataCreateType } from "../Main.types";
 
 const CreateContact = () => {
 	const dispatch = useDispatch();
