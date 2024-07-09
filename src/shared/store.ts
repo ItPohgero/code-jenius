@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import global from "./slice/global";
+import contact from "./slice/contact";
 
 export const store = configureStore({
 	reducer: {
-		global,
+		contact,
 	},
 	devTools: process.env.NODE_ENV !== "production",
 });

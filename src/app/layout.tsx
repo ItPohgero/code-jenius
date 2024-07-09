@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LayoutMain from "@/layouts/LayoutMain";
+import { ProviderReduxToolkit } from "@/providers/Redux";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
-				<LayoutMain>{children}</LayoutMain>
+				<ProviderReduxToolkit>
+					<LayoutMain>{children}</LayoutMain>
+				</ProviderReduxToolkit>
 			</body>
 		</html>
 	);
