@@ -1,0 +1,15 @@
+# Run lint next
+bun run lint
+echo "Code has been lint."
+
+# Run the script to lint the code (check for errors and style issues)
+bun run biome:lint
+echo "Code linting is complete."
+
+# Run the script to check the code (tests, types, etc.)
+bun run biome:check
+echo "Code checks are complete."
+
+# Run the script to format the code
+bun run biome:format
+echo "Code has been formatted."
