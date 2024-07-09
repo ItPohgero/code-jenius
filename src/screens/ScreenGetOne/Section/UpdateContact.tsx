@@ -5,10 +5,10 @@ import type { RootState } from "@/shared/store";
 import { Icon } from "@iconify-icon/react";
 import React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { If, Then } from "react-if";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataType, ContactDataUpdateType } from "../Main.types";
-import toast from "react-hot-toast";
 
 const UpdateContact = ({
 	item,

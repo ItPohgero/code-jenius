@@ -6,9 +6,9 @@ import { Icon } from "@iconify-icon/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataDeleteType, ContactDataType } from "../Main.types";
-import toast from "react-hot-toast";
 
 const DeleteContact = ({ item }: { item: ContactDataType | undefined }) => {
 	const router = useRouter();
@@ -24,8 +24,8 @@ const DeleteContact = ({ item }: { item: ContactDataType | undefined }) => {
 			toast.success("Success!");
 			router.push("/");
 		} catch (error) {
-			dispatch(changeContactRemove(false))
-			toast.error(error?.toString()  as string);
+			dispatch(changeContactRemove(false));
+			toast.error(error?.toString() as string);
 			setLoading(false);
 		} finally {
 			setLoading(false);
