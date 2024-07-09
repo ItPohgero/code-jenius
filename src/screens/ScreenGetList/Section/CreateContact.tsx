@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataCreateType } from "../Main.types";
 
 const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
+	const [loading, setLoading] = React.useState<boolean>(false);
 	const dispatch = useDispatch();
 	const add = useSelector((state: RootState) => state.contact.add);
 	const {
@@ -20,6 +21,7 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 	} = useForm<ContactDataCreateType>();
 	const onSubmit: SubmitHandler<ContactDataCreateType> = async (input) => {
 		try {
+			setLoading(true);
 			const { firstName, lastName, age, photo } = input;
 			await storeData("POST", Endpoint.contact_create, {
 				firstName,
@@ -29,8 +31,10 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 			});
 			reset();
 		} catch (error) {
+			setLoading(false);
 			console.error(error);
 		} finally {
+			setLoading(false);
 			callbackSubmit();
 			dispatch(changeContactAdd({ add: !add }));
 		}
@@ -159,10 +163,11 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 						</div>
 						<div className="mt-4 flex justify-end">
 							<button
-								className="h-12 bg-slate-800 border w-full flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
+								disabled={loading}
+								className="flex justify-center items-center gap-4 h-12 bg-slate-800 border w-full flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
 								type="submit"
 							>
-								Create New
+								{loading && <div className="loader-submit" />} Create New
 							</button>
 						</div>
 					</div>

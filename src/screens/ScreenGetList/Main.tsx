@@ -138,7 +138,7 @@ export default function ScreenGetList() {
 				</Else>
 			</If>
 			<AddButton />
-			<CreateContact callbackSubmit={mutate} />
+			<CreateContact callbackSubmit={() => mutate()} />
 		</Fragment>
 	);
 }

@@ -13,6 +13,7 @@ const UpdateContact = ({
 	item,
 	callbackSubmit,
 }: { item: ContactDataType | undefined; callbackSubmit: () => void }) => {
+	const [loading, setLoading] = React.useState<boolean>(false);
 	const dispatch = useDispatch();
 	const update = useSelector((state: RootState) => state.contact.update);
 	const {
@@ -32,6 +33,7 @@ const UpdateContact = ({
 
 	const onSubmit: SubmitHandler<ContactDataUpdateType> = async (input) => {
 		try {
+			setLoading(true);
 			const { firstName, lastName, age, photo } = input;
 			await storeData("PUT", `${Endpoint.contact_update}/${item?.id}`, {
 				firstName,
@@ -41,8 +43,10 @@ const UpdateContact = ({
 			});
 			reset();
 		} catch (error) {
+			setLoading(false);
 			console.error(error);
 		} finally {
+			setLoading(false);
 			callbackSubmit();
 			dispatch(changeContactUpdate({ update: !update }));
 		}
@@ -171,10 +175,11 @@ const UpdateContact = ({
 						</div>
 						<div className="mt-4 flex justify-end">
 							<button
-								className="h-12 bg-slate-800 border w-full flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
+								disabled={loading}
+								className="flex justify-center items-center gap-4 h-12 bg-slate-800 border w-full flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
 								type="submit"
 							>
-								Update
+								{loading && <div className="loader-submit" />} Update
 							</button>
 						</div>
 					</div>

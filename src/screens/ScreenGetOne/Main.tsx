@@ -13,7 +13,7 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
-import UpdateContact from "./Section/CreateContact";
+import UpdateContact from "./Section/UpdateContact";
 
 export default function ScreenGetOne({ slug }: { slug: string }) {
 	const dispatch = useDispatch();
@@ -40,6 +40,15 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 						className="text-3xl hover:text-slate-800 rounded-full duration-300"
 					/>
 				</Link>
+				<div className="relative">
+					<Image
+						src="/logo.svg"
+						className="rounded-full object-cover"
+						alt="jenius"
+						width={60}
+						height={50}
+					/>
+				</div>
 			</Header>
 			<div>
 				<div className="flex justify-center items-center p-10">
@@ -75,7 +84,7 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 					<div>Delete</div>
 				</div>
 			</div>
-			<UpdateContact item={item} callbackSubmit={mutate} />
+			<UpdateContact item={item} callbackSubmit={() => mutate()} />
 		</div>
 	);
 }
