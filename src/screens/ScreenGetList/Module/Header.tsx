@@ -16,7 +16,7 @@ const ModuleHeader = (props: ModuleHeaderProps) => {
 	return (
 		<Fragment>
 			<Header>
-				<div className="relative mx-auto w-32">
+				<div className="relative mx-auto flex justify-center w-32">
 					<Image
 						src="/logo.svg"
 						className="rounded-full object-cover"
