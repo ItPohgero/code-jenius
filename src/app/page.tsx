@@ -21,7 +21,7 @@ interface GroupedContacts {
 	[key: string]: ContactDataType[];
 }
 export default function Home() {
-	const [search, setSearch] = useState<string>('');
+	const [search, setSearch] = useState<string>("");
 	const { data, isLoading, isError } = useData<ContactResultsType>(
 		Endpoint.contact_list,
 		{
@@ -57,8 +57,8 @@ export default function Home() {
 	);
 
 	// Fungsi untuk filter data berdasarkan pencarian firstName atau lastName
-	const FilteredContacts = Object?.keys(GroupedContactsData)
-		.reduce((obj: GroupedContacts, key) => {
+	const FilteredContacts = Object?.keys(GroupedContactsData).reduce(
+		(obj: GroupedContacts, key) => {
 			const filteredItems = GroupedContactsData[key]?.filter((item) => {
 				const fullName = `${item.firstName} ${item.lastName}`.toLowerCase();
 				return fullName.includes(search.toLowerCase());
@@ -69,11 +69,14 @@ export default function Home() {
 			}
 
 			return obj;
-		}, {});
+		},
+		{},
+	);
 
-
-	// Filter Alpabhet 
-	const FilteredAlphabet = alphabet?.filter((letter) => FilteredContacts[letter]?.length > 0);
+	// Filter Alpabhet
+	const FilteredAlphabet = alphabet?.filter(
+		(letter) => FilteredContacts[letter]?.length > 0,
+	);
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -87,25 +90,21 @@ export default function Home() {
 		<Fragment>
 			<div className="sticky top-0 flex justify-between items-center gap-4 p-2 bg-slate-200">
 				<div className="relative w-32 h-10">
-					<Image
-						src="/logo_jenius-blue.svg"
-						alt="jenius"
-						fill
-					/>
+					<Image src="/logo_jenius-blue.svg" alt="jenius" fill />
 				</div>
 				<input
 					value={search}
 					onChange={(e) => setSearch(e?.target?.value)}
 					type="text"
 					placeholder="Cari..."
-					className="w-full border h-12 focus:outline-none focus:border-none focus:ring-0 py-2 px-4 rounded-full" />
+					className="w-full border h-12 focus:outline-none focus:border-none focus:ring-0 py-2 px-4 rounded-full"
+				/>
 			</div>
 			<div className="mt-4 text-slate-600">
 				{FilteredAlphabet?.map((abjac) => (
 					<div key={abjac}>
 						<h2 className="text-xl font-bold pl-6 bg-slate-200/60">{abjac}</h2>
-						{FilteredContacts[abjac] &&
-							FilteredContacts[abjac]?.length > 0 ? (
+						{FilteredContacts[abjac] && FilteredContacts[abjac]?.length > 0 ? (
 							FilteredContacts[abjac].map((item, index) => (
 								<div key={index.toString()}>
 									<div className="flex justify-start items-center gap-6 border-b border-slate-200 py-4 hover:bg-slate-50 px-6">
