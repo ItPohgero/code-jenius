@@ -17,3 +17,6 @@ export type ContactDataUpdateType = {
 	age: number;
 	photo: string;
 };
+export type ContactDataDeleteType = {
+	confirm: string;
+};

@@ -30,13 +30,12 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 				photo,
 			});
 			reset();
+			callbackSubmit();
+			dispatch(changeContactAdd(!add));
 		} catch (error) {
 			setLoading(false);
-			console.error(error);
 		} finally {
 			setLoading(false);
-			callbackSubmit();
-			dispatch(changeContactAdd({ add: !add }));
 		}
 	};
 	return (
@@ -51,7 +50,7 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 							type="button"
 							className="bg-white hover:bg-slate-200 duration-300 h-8 w-8 flex justify-center items-center rounded-lg aspect-square"
 							onClick={() => {
-								dispatch(changeContactAdd({ add: false }));
+								dispatch(changeContactAdd(false));
 								reset();
 							}}
 						>

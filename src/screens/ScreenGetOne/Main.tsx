@@ -6,7 +6,10 @@ import GetInitialAvatar from "@/hooks/initial-avatar";
 import IsValidImageUrl from "@/hooks/valid-image";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
-import { changeContactUpdate } from "@/shared/slice/contact";
+import {
+	changeContactRemove,
+	changeContactUpdate,
+} from "@/shared/slice/contact";
 import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +17,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
 import UpdateContact from "./Section/UpdateContact";
+import DeleteContact from "./Section/DeleteContact";
 
 export default function ScreenGetOne({ slug }: { slug: string }) {
 	const dispatch = useDispatch();
@@ -73,18 +77,25 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 					</h2>
 					<button
 						type="button"
-						onClick={() => dispatch(changeContactUpdate({ update: true }))}
+						onClick={() => dispatch(changeContactUpdate(true))}
 						className="bg-slate-200 hover:bg-slate-300 duration-300 aspect-square w-8 rounded-lg"
 					>
 						<Icon icon="fluent:people-edit-32-regular" className="text-2xl" />
 					</button>
 				</div>
 				<div className="text-center">{item?.age} Tahun</div>
-				<div className="flex justify-evenly mt-4">
-					<div>Delete</div>
+				<div className="flex justify-evenly mt-4 fixed bottom-10 left-1/2 -translate-x-1/2">
+					<button
+						onClick={() => dispatch(changeContactRemove(true))}
+						className="flex justify-center items-center gap-4 h-12 bg-slate-800 border w-40 flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
+						type="submit"
+					>
+						Delete
+					</button>
 				</div>
 			</div>
 			<UpdateContact item={item} callbackSubmit={() => mutate()} />
+			<DeleteContact item={item} />
 		</div>
 	);
 }

@@ -13,7 +13,7 @@ const AddButton = () => {
 				<div className="fixed max-w-xl bottom-0 w-full z-50">
 					<div className="flex justify-end p-10">
 						<button
-							onClick={() => dispatch(changeContactAdd({ add: true }))}
+							onClick={() => dispatch(changeContactAdd(true))}
 							type="button"
 							className="bg-sky-500 w-12 h-12 flex justify-center items-center rounded-2xl group duration-300 shadow-lg"
 						>

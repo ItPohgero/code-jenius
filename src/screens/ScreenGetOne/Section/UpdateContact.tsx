@@ -19,7 +19,6 @@ const UpdateContact = ({
 	const {
 		register,
 		handleSubmit,
-		reset,
 		setValue,
 		formState: { errors },
 	} = useForm<ContactDataUpdateType>();
@@ -41,14 +40,12 @@ const UpdateContact = ({
 				age,
 				photo,
 			});
-			reset();
+			callbackSubmit();
+			dispatch(changeContactUpdate(!update));
 		} catch (error) {
 			setLoading(false);
-			console.error(error);
 		} finally {
 			setLoading(false);
-			callbackSubmit();
-			dispatch(changeContactUpdate({ update: !update }));
 		}
 	};
 	return (
@@ -63,8 +60,7 @@ const UpdateContact = ({
 							type="button"
 							className="bg-white hover:bg-slate-200 duration-300 h-8 w-8 flex justify-center items-center rounded-lg aspect-square"
 							onClick={() => {
-								dispatch(changeContactUpdate({ update: false }));
-								reset();
+								dispatch(changeContactUpdate(false));
 							}}
 						>
 							<Icon icon="solar:close-square-linear" className="text-xl" />
