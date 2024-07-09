@@ -47,8 +47,8 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 							type="button"
 							className="bg-white hover:bg-slate-200 duration-300 h-8 w-8 flex justify-center items-center rounded-lg aspect-square"
 							onClick={() => {
-								dispatch(changeContact({ add: false }))
-								reset()
+								dispatch(changeContact({ add: false }));
+								reset();
 							}}
 						>
 							<Icon icon="solar:close-square-linear" className="text-xl" />
