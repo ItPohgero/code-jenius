@@ -6,9 +6,12 @@ import GetInitialAvatar from "@/hooks/initial-avatar";
 import IsValidImageUrl from "@/hooks/valid-image";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
+import type { RootState } from "@/shared/store";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import { If, Then } from "react-if";
+import { useSelector } from "react-redux";
 import type {
 	ContactDataType,
 	ContactResultsType,
@@ -17,9 +20,6 @@ import type {
 import AddButton from "./Module/AddButton";
 import ModuleHeader from "./Module/Header";
 import CreateContact from "./Section/CreateContact";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/shared/store";
-import { If, Then } from "react-if";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
