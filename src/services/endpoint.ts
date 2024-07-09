@@ -1,3 +1,3 @@
 export const Endpoint = {
-    contact_list: "/contact"
-}
+	contact_list: "/contact",
+};
