@@ -1,6 +1,7 @@
 "use client";
 
 import ErrorData from "@/components/error";
+import Header from "@/components/header";
 import LoadingData from "@/components/loading";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
@@ -13,7 +14,6 @@ import type {
 	ContactResultsType,
 	GroupedContacts,
 } from "./Main.types";
-import Header from "@/components/header";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
