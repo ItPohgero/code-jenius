@@ -17,6 +17,9 @@ type ContactResultsType = {
 	data: ContactDataType[];
 };
 
+interface GroupedContacts {
+	[key: string]: ContactDataType[];
+}
 export default function Home() {
 	const { data, isLoading, isError } = useData<ContactResultsType>(
 		Endpoint.contact_list,
@@ -34,20 +37,38 @@ export default function Home() {
 		return <div>Error loading data.</div>;
 	}
 
+	// Buat array alfabet A-Z
+	const alphabet = [...Array(26)]?.map((_, i) => String?.fromCharCode(65 + i));
+
+	// Fungsi memeriksa URL gambar valid
 	const IsValidImageUrl = (url: string): boolean => {
-		return url.startsWith("http");
+		return url?.startsWith("http");
 	};
+
+	// Fungsi mendapatkan avatar berupa inisial
 	const GetInitialAvatar = (firstName: string, lastName: string): string => {
 		const initials = (firstName[0] || "") + (lastName[0] || "");
-		return initials.toUpperCase();
+		return initials?.toUpperCase();
 	};
+
+	// Objek  menyimpan kontak yang dikelompokkan berdasarkan huruf pertama dari nama depan
+	const GroupedContactsData: GroupedContacts = (data?.data || [])?.
+		reduce((acc: GroupedContacts, item: ContactDataType) => {
+			const firstLetter = item?.firstName[0]?.toUpperCase();
+			if (!acc[firstLetter]) {
+				acc[firstLetter] = [];
+			}
+			acc[firstLetter]?.push(item);
+			return acc;
+		}, {});
 	return (
 		<Fragment>
-			<div className="pt-20">
-				{data?.data?.map((item, index) => {
-					return (
-						<div key={index?.toString()}>
-							<div>
+			{alphabet?.map((abjac) => (
+				<div key={abjac}>
+					<h2 className="text-xl font-bold pl-2 bg-slate-200">{abjac}</h2>
+					{GroupedContactsData[abjac] && GroupedContactsData[abjac]?.length > 0 ? (
+						GroupedContactsData[abjac].map((item, index) => (
+							<div key={index.toString()}>
 								<div className="flex justify-start items-center gap-6 border-b py-4 hover:bg-slate-50 px-6">
 									<div>
 										{IsValidImageUrl(item.photo) ? (
@@ -59,22 +80,25 @@ export default function Home() {
 												className="aspect-square object-cover rounded-full"
 											/>
 										) : (
-											<div className="bg-slate-200 w-[40px] h-[40px] aspect-square rounded-full flex justify-center items-center">
-												{GetInitialAvatar(item?.firstName, item?.lastName)}
+											<div className="bg-slate-200 w-[40px] h-[40px] aspect-square rounded-full flex justify-center items-center font-bold text-slate-600">
+												{GetInitialAvatar(item.firstName, item.lastName)}
 											</div>
 										)}
 									</div>
 									<div>
-										<div>{item?.age}</div>
-										<div>{item?.firstName} </div>
-										<div>{item?.lastName}</div>
+										<p className="font-bold capitalize">{item.firstName} {item.lastName}</p>
+										<p className="text-sm">Age: {item.age}</p>
 									</div>
 								</div>
 							</div>
+						))
+					) : (
+						<div className="flex justify-start items-center gap-6 border-b py-4 px-6">
+							<div className="text-slate-500">No contacts</div>
 						</div>
-					);
-				})}
-			</div>
+					)}
+				</div>
+			))}
 		</Fragment>
 	);
 }
