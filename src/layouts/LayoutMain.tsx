@@ -1,7 +1,7 @@
 "use client";
 import ScrollProgressBar from "@/components/scroll-progress-bar";
-import React, { type PropsWithChildren } from "react";
 import NextTopLoader from "nextjs-toploader";
+import React, { type PropsWithChildren } from "react";
 
 export default function LayoutMain(props: PropsWithChildren) {
 	return (

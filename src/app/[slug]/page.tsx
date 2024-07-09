@@ -1,5 +1,5 @@
-import React from "react";
 import ScreenGetContactOne from "@/screens/ScreenGetContactOne/Main";
+import React from "react";
 
 export default function Page({
 	params: { slug },

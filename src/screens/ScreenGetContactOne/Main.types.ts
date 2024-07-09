@@ -8,9 +8,5 @@ export type ContactDataType = {
 
 export type ContactResultsType = {
 	message: string;
-	data: ContactDataType[];
-};
-
-export type GroupedContacts = {
-	[key: string]: ContactDataType[];
+	data: ContactDataType;
 };

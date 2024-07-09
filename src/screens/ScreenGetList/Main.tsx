@@ -3,13 +3,15 @@
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useState } from "react";
 import type {
 	ContactDataType,
 	ContactResultsType,
 	GroupedContacts,
 } from "./Main.types";
-import Link from "next/link";
+import ErrorData from "@/components/error";
+import LoadingData from "@/components/loading";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
@@ -68,19 +70,11 @@ export default function ScreenGetList() {
 	);
 
 	if (isLoading) {
-		return (
-			<div className="h-screen flex justify-center items-center">
-				<div className="custom-loader" />
-			</div>
-		);
+		return <LoadingData />;
 	}
 
 	if (isError) {
-		return (
-			<div className="h-screen flex justify-center items-center">
-				<span>Error</span>
-			</div>
-		);
+		return <ErrorData />;
 	}
 	return (
 		<Fragment>
