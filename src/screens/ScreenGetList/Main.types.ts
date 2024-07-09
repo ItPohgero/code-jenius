@@ -14,3 +14,11 @@ export type ContactResultsType = {
 export type GroupedContacts = {
 	[key: string]: ContactDataType[];
 };
+
+
+export type ContactDataCreateType = {
+	firstName: string;
+	lastName: string;
+	age: number;
+	photo: string;
+};

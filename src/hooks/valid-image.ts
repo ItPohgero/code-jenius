@@ -1,6 +1,7 @@
 // Fungsi memeriksa URL gambar valid
 const IsValidImageUrl = (url: string): boolean => {
-	return url?.startsWith("http");
+	const regex = /\.(jpg|jpeg|png)$/i;
+	return !!url.match(regex);
 };
 
 export default IsValidImageUrl;
