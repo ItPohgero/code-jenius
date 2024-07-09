@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
+import Header from "@/components/header";
 
 export default function ScreenGetContactOne({ slug }: { slug: string }) {
 	const { data, isLoading, isError } = useData<ContactResultsType>(
@@ -39,9 +40,14 @@ export default function ScreenGetContactOne({ slug }: { slug: string }) {
 	}
 	return (
 		<div className="text-slate-600">
-			<div className="sticky top-0 flex justify-between items-center gap-4 py-2 px-6 bg-slate-200 h-14">
-				<Link href="/">back</Link>
-			</div>
+			<Header>
+				<Link href="/">
+					<Icon
+						icon="solar:round-arrow-left-line-duotone"
+						className="text-3xl hover:text-slate-800 rounded-full duration-300"
+					/>
+				</Link>
+			</Header>
 			<div>
 				<div className="flex justify-center items-center p-10">
 					{IsValidImageUrl(item?.photo || "") ? (

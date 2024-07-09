@@ -13,6 +13,7 @@ import type {
 	ContactResultsType,
 	GroupedContacts,
 } from "./Main.types";
+import Header from "@/components/header";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
@@ -79,13 +80,19 @@ export default function ScreenGetList() {
 	}
 	return (
 		<Fragment>
-			<div className="sticky top-0 flex justify-between items-center gap-4 py-2 px-6 bg-slate-200 h-14">
-				<div className="relative w-32 h-10">
-					<Image src="/logo_jenius-blue.svg" alt="jenius" fill />
+			<Header>
+				<div className="relative">
+					<Image
+						src="/logo.svg"
+						className="rounded-full object-cover"
+						alt="jenius"
+						width={100}
+						height={50}
+					/>
 				</div>
 				<label
 					htmlFor="search"
-					className="bg-slate-100 flex justify-end items-center w-full rounded-2xl h-full"
+					className="bg-slate-100 flex justify-end items-center w-full rounded-xl h-full"
 				>
 					<div className="w-10 flex justify-center items-center">
 						<Icon
@@ -101,13 +108,13 @@ export default function ScreenGetList() {
 						className="h-full bg-transparent flex-1 focus:ring-0 focus:outline-none text-slate-500"
 					/>
 				</label>
-			</div>
+			</Header>
 			<div className="mt-4 text-slate-600">
-				{FilteredAlphabet?.map((abjac) => (
-					<div key={abjac}>
-						<h2 className="text-lg font-bold pl-6 bg-slate-200/60">{abjac}</h2>
-						{FilteredContacts[abjac] && FilteredContacts[abjac]?.length > 0 ? (
-							FilteredContacts[abjac].map((item, index) => (
+				{FilteredAlphabet?.map((abjad) => (
+					<div key={abjad}>
+						<h2 className="text-lg font-bold pl-6 bg-slate-200/60">{abjad}</h2>
+						{FilteredContacts[abjad] && FilteredContacts[abjad]?.length > 0 ? (
+							FilteredContacts[abjad].map((item, index) => (
 								<Link href={`/${item?.id}`} key={index.toString()}>
 									<div className="flex justify-start items-center gap-6 border-b border-slate-200 py-4 hover:bg-slate-50 px-6 cursor-pointer">
 										<div>
@@ -154,7 +161,7 @@ export default function ScreenGetList() {
 				<div className="flex justify-end p-10">
 					<button
 						type="button"
-						className="bg-sky-500 aspect-square h-12 rounded-full group duration-300 shadow-lg"
+						className="bg-sky-500 w-12 h-12 flex justify-center items-center rounded-2xl group duration-300 shadow-lg"
 					>
 						<Icon
 							icon="solar:user-plus-bold"
