@@ -79,17 +79,28 @@ export default function ScreenGetList() {
 	}
 	return (
 		<Fragment>
-			<div className="sticky top-0 flex justify-between items-center gap-4 p-2 bg-slate-200 h-14">
+			<div className="sticky top-0 flex justify-between items-center gap-4 py-2 px-6 bg-slate-200 h-14">
 				<div className="relative w-32 h-10">
 					<Image src="/logo_jenius-blue.svg" alt="jenius" fill />
 				</div>
-				<input
-					value={search}
-					onChange={(e) => setSearch(e?.target?.value)}
-					type="text"
-					placeholder="Cari..."
-					className="w-full border h-12 focus:outline-none focus:border-none focus:ring-0 py-2 px-4 rounded-full"
-				/>
+				<label
+					htmlFor="search"
+					className="bg-slate-100 flex justify-end items-center w-full rounded-2xl h-full"
+				>
+					<div className="w-10 flex justify-center items-center">
+						<Icon
+							icon="majesticons:search-line"
+							className="text-xl text-slate-500"
+						/>
+					</div>
+					<input
+						value={search}
+						onChange={(e) => setSearch(e?.target?.value)}
+						type="text"
+						placeholder="Cari..."
+						className="h-full bg-transparent flex-1 focus:ring-0 focus:outline-none text-slate-500"
+					/>
+				</label>
 			</div>
 			<div className="mt-4 text-slate-600">
 				{FilteredAlphabet?.map((abjac) => (

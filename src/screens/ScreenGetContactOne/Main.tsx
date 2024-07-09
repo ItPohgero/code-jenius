@@ -39,7 +39,7 @@ export default function ScreenGetContactOne({ slug }: { slug: string }) {
 	}
 	return (
 		<div className="text-slate-600">
-			<div className="sticky top-0 flex justify-between items-center gap-4 p-2 bg-slate-200 h-14">
+			<div className="sticky top-0 flex justify-between items-center gap-4 py-2 px-6 bg-slate-200 h-14">
 				<Link href="/">back</Link>
 			</div>
 			<div>
