@@ -1,4 +1,4 @@
-import { changeContact } from "@/shared/slice/contact";
+import { changeContactAdd } from "@/shared/slice/contact";
 import type { RootState } from "@/shared/store";
 import { Icon } from "@iconify-icon/react";
 import React, { Fragment } from "react";
@@ -13,7 +13,7 @@ const AddButton = () => {
 				<div className="fixed max-w-xl bottom-0 w-full z-50">
 					<div className="flex justify-end p-10">
 						<button
-							onClick={() => dispatch(changeContact({ add: true }))}
+							onClick={() => dispatch(changeContactAdd({ add: true }))}
 							type="button"
 							className="bg-sky-500 w-12 h-12 flex justify-center items-center rounded-2xl group duration-300 shadow-lg"
 						>

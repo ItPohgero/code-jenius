@@ -14,7 +14,7 @@ export const Contact = createSlice({
 	initialState,
 	reducers: {
 		reset: () => initialState,
-		changeContact: (
+		changeContactAdd: (
 			state: ContactState,
 			action: PayloadAction<ContactState>,
 		) => {
@@ -30,5 +30,5 @@ export const Contact = createSlice({
 		},
 	},
 });
-export const { changeContact, changeContactUpdate, reset } = Contact.actions;
+export const { changeContactAdd, changeContactUpdate, reset } = Contact.actions;
 export default Contact.reducer;

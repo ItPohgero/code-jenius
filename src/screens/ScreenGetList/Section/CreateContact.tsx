@@ -1,6 +1,6 @@
 import { Endpoint } from "@/services/endpoint";
 import storeData from "@/services/storeData";
-import { changeContact } from "@/shared/slice/contact";
+import { changeContactAdd } from "@/shared/slice/contact";
 import type { RootState } from "@/shared/store";
 import { Icon } from "@iconify-icon/react";
 import React from "react";
@@ -32,7 +32,7 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 			console.error(error);
 		} finally {
 			callbackSubmit();
-			dispatch(changeContact({ add: !add }));
+			dispatch(changeContactAdd({ add: !add }));
 		}
 	};
 	return (
@@ -47,7 +47,7 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 							type="button"
 							className="bg-white hover:bg-slate-200 duration-300 h-8 w-8 flex justify-center items-center rounded-lg aspect-square"
 							onClick={() => {
-								dispatch(changeContact({ add: false }));
+								dispatch(changeContactAdd({ add: false }));
 								reset();
 							}}
 						>
