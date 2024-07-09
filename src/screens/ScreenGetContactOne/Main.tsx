@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
 import ErrorData from "@/components/error";
 import LoadingData from "@/components/loading";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
+import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify-icon/react";
+import React from "react";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
 
 export default function ScreenGetContactOne({ slug }: { slug: string }) {

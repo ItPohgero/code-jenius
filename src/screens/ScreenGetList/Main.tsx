@@ -4,10 +4,10 @@ import ErrorData from "@/components/error";
 import LoadingData from "@/components/loading";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
+import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
-import { Icon } from "@iconify-icon/react";
 import type {
 	ContactDataType,
 	ContactResultsType,
