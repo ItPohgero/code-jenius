@@ -12,7 +12,7 @@ import Link from "next/link";
 import React from "react";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
 
-export default function ScreenGetContactOne({ slug }: { slug: string }) {
+export default function ScreenGetOne({ slug }: { slug: string }) {
 	const { data, isLoading, isError } = useData<ContactResultsType>(
 		`${Endpoint.contact_show}/${slug}`,
 		{

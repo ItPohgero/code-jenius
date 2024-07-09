@@ -73,13 +73,13 @@ export default function ScreenGetList() {
 		<Fragment>
 			<ModuleHeader search={search} setSearch={setSearch} />
 			<div className="mt-4 text-slate-600">
-				{FilteredAlphabet?.map((abjad) => (
+				{(search ? FilteredAlphabet : alphabet)?.map((abjad) => (
 					<div key={abjad}>
-						<h2 className="text-lg font-bold pl-6 bg-slate-200/60">{abjad}</h2>
+						<h2 className="text-lg font-bold pl-6 bg-slate-200/60 text-slate-400">{abjad}</h2>
 						{FilteredContacts[abjad] && FilteredContacts[abjad]?.length > 0 ? (
 							FilteredContacts[abjad]?.map((item, index) => (
 								<Link href={`/${item?.id}`} key={index.toString()}>
-									<div className="flex justify-start items-center gap-6 border-b border-slate-200 py-4 hover:bg-slate-50 px-6 cursor-pointer">
+									<div className="flex justify-start items-center gap-6 border-b border-slate-200 py-4 hover:bg-slate-100 px-6 cursor-pointer">
 										<div>
 											{IsValidImageUrl(item.photo) ? (
 												<Image
