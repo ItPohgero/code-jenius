@@ -27,7 +27,7 @@ const fetcher = async <T>(
 };
 
 const useData = <T>(url: string, options?: FetchOptions) => {
-	const { data, error } = useSWR<T>(
+	const { data, error, mutate } = useSWR<T>(
 		[url, options],
 		([url, options]) => fetcher<T>(url, options ?? {}),
 		{
@@ -40,6 +40,7 @@ const useData = <T>(url: string, options?: FetchOptions) => {
 		data,
 		isLoading: !error && !data,
 		isError: !!error,
+		mutate,
 	};
 };
 

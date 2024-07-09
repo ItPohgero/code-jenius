@@ -9,7 +9,7 @@ import { If, Then } from "react-if";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataCreateType } from "../Main.types";
 
-const CreateContact = () => {
+const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 	const dispatch = useDispatch();
 	const add = useSelector((state: RootState) => state.contact.add);
 	const {
@@ -31,6 +31,7 @@ const CreateContact = () => {
 		} catch (error) {
 			console.error(error);
 		} finally {
+			callbackSubmit();
 			dispatch(changeContact({ add: !add }));
 		}
 	};

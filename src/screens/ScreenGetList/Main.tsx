@@ -23,7 +23,7 @@ import CreateContact from "./Section/CreateContact";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
-	const { data, isLoading, isError } = useData<ContactResultsType>(
+	const { data, isLoading, isError, mutate } = useData<ContactResultsType>(
 		Endpoint.contact_list,
 		{
 			method: "GET",
@@ -155,7 +155,7 @@ export default function ScreenGetList() {
 				</Else>
 			</If>
 			<AddButton />
-			<CreateContact />
+			<CreateContact callbackSubmit={mutate} />
 		</Fragment>
 	);
 }
