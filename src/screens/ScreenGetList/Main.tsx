@@ -134,24 +134,7 @@ export default function ScreenGetList() {
 					</div>
 				</Then>
 				<Else>
-					<div className="bg-white h-[60vh] relative flex justify-center items-center">
-						<div>
-							<div className="text-2xl font-bold text-center">
-								Jenius Contact
-							</div>
-							<div className="text-xs text-center text-slate-500">
-								Coding Test
-							</div>
-						</div>
-						<Image
-							priority
-							src="/pattern.webp"
-							alt="pattern"
-							width={300}
-							height={300}
-							className="aspect-square object-cover absolute top-0 right-0 opacity-30"
-						/>
-					</div>
+					<div className="bg-white h-[80vh] w-full" />
 				</Else>
 			</If>
 			<AddButton />
