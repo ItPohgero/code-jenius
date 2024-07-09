@@ -8,6 +8,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { If, Then } from "react-if";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataType, ContactDataUpdateType } from "../Main.types";
+import toast from "react-hot-toast";
 
 const UpdateContact = ({
 	item,
@@ -42,7 +43,9 @@ const UpdateContact = ({
 			});
 			callbackSubmit();
 			dispatch(changeContactUpdate(!update));
+			toast.success("Success!");
 		} catch (error) {
+			toast.error(error?.toString() as string);
 			setLoading(false);
 		} finally {
 			setLoading(false);

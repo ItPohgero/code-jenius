@@ -8,6 +8,7 @@ import React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataDeleteType, ContactDataType } from "../Main.types";
+import toast from "react-hot-toast";
 
 const DeleteContact = ({ item }: { item: ContactDataType | undefined }) => {
 	const router = useRouter();
@@ -20,8 +21,11 @@ const DeleteContact = ({ item }: { item: ContactDataType | undefined }) => {
 		try {
 			setLoading(true);
 			await storeData("DELETE", `${Endpoint.contact_delete}/${item?.id}`, {});
+			toast.success("Success!");
 			router.push("/");
 		} catch (error) {
+			dispatch(changeContactRemove(false))
+			toast.error(error?.toString()  as string);
 			setLoading(false);
 		} finally {
 			setLoading(false);

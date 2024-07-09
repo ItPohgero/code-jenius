@@ -8,6 +8,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { If, Then } from "react-if";
 import { useDispatch, useSelector } from "react-redux";
 import type { ContactDataCreateType } from "../Main.types";
+import toast from "react-hot-toast";
 
 const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 	const [loading, setLoading] = React.useState<boolean>(false);
@@ -31,8 +32,10 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 			});
 			reset();
 			callbackSubmit();
+			toast.success("Success!");
 			dispatch(changeContactAdd(!add));
 		} catch (error) {
+			toast.error(error?.toString() as string);
 			setLoading(false);
 		} finally {
 			setLoading(false);
