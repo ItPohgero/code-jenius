@@ -12,10 +12,7 @@ export const Global = createSlice({
 	initialState,
 	reducers: {
 		reset: () => initialState,
-		changeGlobal: (
-			state: GlobalState,
-			action: PayloadAction<GlobalState>,
-		) => {
+		changeGlobal: (state: GlobalState, action: PayloadAction<GlobalState>) => {
 			const { status } = action.payload;
 			state.status = status !== undefined ? status : state.status;
 		},
