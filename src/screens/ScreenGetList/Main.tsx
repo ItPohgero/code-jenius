@@ -67,12 +67,19 @@ export default function ScreenGetList() {
 	);
 
 	if (isLoading) {
-		return <div>Loading...</div>;
+		return (
+			<div className="h-[80vh] flex justify-center items-center">
+				<div className="custom-loader" />
+			</div>
+		);
 	}
 
 	if (isError) {
-		console.error("Error fetching data:");
-		return <div>Error loading data.</div>;
+		return (
+			<div className="h-[80vh] flex justify-center items-center">
+				<span>Error</span>
+			</div>
+		);
 	}
 	return (
 		<Fragment>
