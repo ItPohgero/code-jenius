@@ -9,6 +9,7 @@ import type {
 	ContactResultsType,
 	GroupedContacts,
 } from "./Main.types";
+import Link from "next/link";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
@@ -68,7 +69,7 @@ export default function ScreenGetList() {
 
 	if (isLoading) {
 		return (
-			<div className="h-[80vh] flex justify-center items-center">
+			<div className="h-screen flex justify-center items-center">
 				<div className="custom-loader" />
 			</div>
 		);
@@ -76,14 +77,14 @@ export default function ScreenGetList() {
 
 	if (isError) {
 		return (
-			<div className="h-[80vh] flex justify-center items-center">
+			<div className="h-screen flex justify-center items-center">
 				<span>Error</span>
 			</div>
 		);
 	}
 	return (
 		<Fragment>
-			<div className="sticky top-0 flex justify-between items-center gap-4 p-2 bg-slate-200">
+			<div className="sticky top-0 flex justify-between items-center gap-4 p-2 bg-slate-200 h-14">
 				<div className="relative w-32 h-10">
 					<Image src="/logo_jenius-blue.svg" alt="jenius" fill />
 				</div>
@@ -101,7 +102,7 @@ export default function ScreenGetList() {
 						<h2 className="text-lg font-bold pl-6 bg-slate-200/60">{abjac}</h2>
 						{FilteredContacts[abjac] && FilteredContacts[abjac]?.length > 0 ? (
 							FilteredContacts[abjac].map((item, index) => (
-								<div key={index.toString()}>
+								<Link href={`/${item?.id}`} key={index.toString()}>
 									<div className="flex justify-start items-center gap-6 border-b border-slate-200 py-4 hover:bg-slate-50 px-6 cursor-pointer">
 										<div>
 											{IsValidImageUrl(item.photo) ? (
@@ -126,7 +127,7 @@ export default function ScreenGetList() {
 											<p>Age: {item.age}</p>
 										</div>
 									</div>
-								</div>
+								</Link>
 							))
 						) : (
 							<div className="flex justify-start items-center gap-6 border-b py-4 px-6">
