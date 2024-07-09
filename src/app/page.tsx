@@ -52,21 +52,24 @@ export default function Home() {
 	};
 
 	// Objek  menyimpan kontak yang dikelompokkan berdasarkan huruf pertama dari nama depan
-	const GroupedContactsData: GroupedContacts = (data?.data || [])?.
-		reduce((acc: GroupedContacts, item: ContactDataType) => {
+	const GroupedContactsData: GroupedContacts = (data?.data || [])?.reduce(
+		(acc: GroupedContacts, item: ContactDataType) => {
 			const firstLetter = item?.firstName[0]?.toUpperCase();
 			if (!acc[firstLetter]) {
 				acc[firstLetter] = [];
 			}
 			acc[firstLetter]?.push(item);
 			return acc;
-		}, {});
+		},
+		{},
+	);
 	return (
 		<Fragment>
 			{alphabet?.map((abjac) => (
 				<div key={abjac}>
 					<h2 className="text-xl font-bold pl-2 bg-slate-200">{abjac}</h2>
-					{GroupedContactsData[abjac] && GroupedContactsData[abjac]?.length > 0 ? (
+					{GroupedContactsData[abjac] &&
+					GroupedContactsData[abjac]?.length > 0 ? (
 						GroupedContactsData[abjac].map((item, index) => (
 							<div key={index.toString()}>
 								<div className="flex justify-start items-center gap-6 border-b py-4 hover:bg-slate-50 px-6">
@@ -86,7 +89,9 @@ export default function Home() {
 										)}
 									</div>
 									<div>
-										<p className="font-bold capitalize">{item.firstName} {item.lastName}</p>
+										<p className="font-bold capitalize">
+											{item.firstName} {item.lastName}
+										</p>
 										<p className="text-sm">Age: {item.age}</p>
 									</div>
 								</div>
