@@ -1,12 +1,12 @@
 "use client";
+import ErrorData from "@/components/error";
+import LoadingData from "@/components/loading";
+import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
-import { Endpoint } from "@/services/endpoint";
-import Image from "next/image";
-import ErrorData from "@/components/error";
-import LoadingData from "@/components/loading";
 
 export default function ScreenGetContactOne({ slug }: { slug: string }) {
 	const { data, isLoading, isError } = useData<ContactResultsType>(

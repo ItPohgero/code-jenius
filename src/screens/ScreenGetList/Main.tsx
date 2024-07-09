@@ -1,5 +1,7 @@
 "use client";
 
+import ErrorData from "@/components/error";
+import LoadingData from "@/components/loading";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
 import Image from "next/image";
@@ -10,8 +12,6 @@ import type {
 	ContactResultsType,
 	GroupedContacts,
 } from "./Main.types";
-import ErrorData from "@/components/error";
-import LoadingData from "@/components/loading";
 
 export default function ScreenGetList() {
 	const [search, setSearch] = useState<string>("");
