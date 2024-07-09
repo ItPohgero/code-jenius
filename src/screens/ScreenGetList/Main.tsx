@@ -7,6 +7,7 @@ import useData from "@/services/useData";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import { Icon } from "@iconify-icon/react";
 import type {
 	ContactDataType,
 	ContactResultsType,
@@ -137,6 +138,19 @@ export default function ScreenGetList() {
 						</div>
 					</div>
 				)}
+			</div>
+			<div className="fixed max-w-xl bottom-0 w-full">
+				<div className="flex justify-end p-10">
+					<button
+						type="button"
+						className="bg-sky-500 aspect-square h-12 rounded-full group duration-300 shadow-lg"
+					>
+						<Icon
+							icon="solar:user-plus-bold"
+							className="text-3xl text-white group-hover:scale-125 duration-300"
+						/>
+					</button>
+				</div>
 			</div>
 		</Fragment>
 	);
