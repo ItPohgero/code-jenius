@@ -2,7 +2,7 @@ import axios, { type AxiosRequestConfig } from "axios";
 import useSWR from "swr";
 
 const axiosInstance = axios.create({
-	baseURL: "https://contact.herokuapp.com",
+	baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 	headers: {
 		"Content-Type": "application/json",
 	},
@@ -31,8 +31,8 @@ const useData = <T>(url: string, options?: FetchOptions) => {
 		[url, options],
 		([url, options]) => fetcher<T>(url, options ?? {}),
 		{
-			revalidateOnFocus: false, // Disable revalidation on focus
-			dedupingInterval: 60000, // Cache data for 60 seconds
+			revalidateOnFocus: false,
+			dedupingInterval: 60000,
 		},
 	);
 
