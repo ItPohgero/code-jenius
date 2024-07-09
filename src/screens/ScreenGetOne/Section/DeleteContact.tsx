@@ -3,11 +3,11 @@ import storeData from "@/services/storeData";
 import { changeContactRemove } from "@/shared/slice/contact";
 import type { RootState } from "@/shared/store";
 import { Icon } from "@iconify-icon/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import type { ContactDataType, ContactDataDeleteType } from "../Main.types";
-import { useRouter } from "next/navigation";
+import type { ContactDataDeleteType, ContactDataType } from "../Main.types";
 
 const DeleteContact = ({ item }: { item: ContactDataType | undefined }) => {
 	const router = useRouter();

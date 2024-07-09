@@ -16,8 +16,8 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
-import UpdateContact from "./Section/UpdateContact";
 import DeleteContact from "./Section/DeleteContact";
+import UpdateContact from "./Section/UpdateContact";
 
 export default function ScreenGetOne({ slug }: { slug: string }) {
 	const dispatch = useDispatch();
