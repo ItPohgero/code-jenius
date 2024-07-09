@@ -75,7 +75,9 @@ export default function ScreenGetList() {
 			<div className="mt-4 text-slate-600">
 				{(search ? FilteredAlphabet : alphabet)?.map((abjad) => (
 					<div key={abjad}>
-						<h2 className="text-lg font-bold pl-6 bg-slate-200/60 text-slate-400">{abjad}</h2>
+						<h2 className="text-lg font-bold pl-6 bg-slate-200/60 text-slate-400">
+							{abjad}
+						</h2>
 						{FilteredContacts[abjad] && FilteredContacts[abjad]?.length > 0 ? (
 							FilteredContacts[abjad]?.map((item, index) => (
 								<Link href={`/${item?.id}`} key={index.toString()}>
