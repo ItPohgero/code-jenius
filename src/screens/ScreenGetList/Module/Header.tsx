@@ -36,7 +36,7 @@ const ModuleHeader = (props: ModuleHeaderProps) => {
 						onChange={(e) => setSearch(e?.target?.value)}
 						type="text"
 						placeholder="Cari..."
-						className="h-full bg-transparent flex-1 focus:ring-0 focus:outline-none text-slate-500"
+						className="h-full bg-transparent flex-1 focus:ring-0 focus:outline-none text-slate-500 text-base"
 					/>
 				</label>
 			</Header>
