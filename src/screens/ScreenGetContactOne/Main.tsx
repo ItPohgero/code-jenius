@@ -2,6 +2,8 @@
 import ErrorData from "@/components/error";
 import Header from "@/components/header";
 import LoadingData from "@/components/loading";
+import GetInitialAvatar from "@/hooks/initial-avatar";
+import IsValidImageUrl from "@/hooks/valid-image";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
 import { Icon } from "@iconify-icon/react";
@@ -17,24 +19,11 @@ export default function ScreenGetContactOne({ slug }: { slug: string }) {
 			method: "GET",
 		},
 	);
-
-	// Fungsi memeriksa URL gambar valid
-	const IsValidImageUrl = (url: string): boolean => {
-		return url?.startsWith("http");
-	};
-
-	// Fungsi mendapatkan avatar berupa inisial
-	const GetInitialAvatar = (firstName: string, lastName: string): string => {
-		const initials = (firstName[0] || "") + (lastName[0] || "");
-		return initials?.toUpperCase();
-	};
-
 	const item: ContactDataType | undefined = data?.data;
 
 	if (isLoading) {
 		return <LoadingData />;
 	}
-
 	if (isError) {
 		return <ErrorData />;
 	}
