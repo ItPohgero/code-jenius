@@ -10,3 +10,10 @@ export type ContactResultsType = {
 	message: string;
 	data: ContactDataType;
 };
+
+export type ContactDataUpdateType = {
+	firstName: string;
+	lastName: string;
+	age: number;
+	photo: string;
+};

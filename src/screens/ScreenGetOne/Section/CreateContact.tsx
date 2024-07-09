@@ -1,27 +1,39 @@
 import { Endpoint } from "@/services/endpoint";
 import storeData from "@/services/storeData";
-import { changeContact } from "@/shared/slice/contact";
+import { changeContactUpdate } from "@/shared/slice/contact";
 import type { RootState } from "@/shared/store";
 import { Icon } from "@iconify-icon/react";
 import React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { If, Then } from "react-if";
 import { useDispatch, useSelector } from "react-redux";
-import type { ContactDataCreateType } from "../Main.types";
+import type { ContactDataType, ContactDataUpdateType } from "../Main.types";
 
-const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
+const UpdateContact = ({
+	item,
+	callbackSubmit,
+}: { item: ContactDataType | undefined; callbackSubmit: () => void }) => {
 	const dispatch = useDispatch();
-	const add = useSelector((state: RootState) => state.contact.add);
+	const update = useSelector((state: RootState) => state.contact.update);
 	const {
 		register,
 		handleSubmit,
 		reset,
+		setValue,
 		formState: { errors },
-	} = useForm<ContactDataCreateType>();
-	const onSubmit: SubmitHandler<ContactDataCreateType> = async (input) => {
+	} = useForm<ContactDataUpdateType>();
+
+	React.useEffect(() => {
+		setValue("firstName", item?.firstName ?? "");
+		setValue("lastName", item?.lastName ?? "");
+		setValue("age", item?.age ?? 0);
+		setValue("photo", item?.photo ?? "");
+	}, [item, setValue]);
+
+	const onSubmit: SubmitHandler<ContactDataUpdateType> = async (input) => {
 		try {
 			const { firstName, lastName, age, photo } = input;
-			await storeData("POST", Endpoint.contact_create, {
+			await storeData("PUT", `${Endpoint.contact_update}/${item?.id}`, {
 				firstName,
 				lastName,
 				age,
@@ -32,22 +44,22 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 			console.error(error);
 		} finally {
 			callbackSubmit();
-			dispatch(changeContact({ add: !add }));
+			dispatch(changeContactUpdate({ update: !update }));
 		}
 	};
 	return (
 		<div>
 			<div
-				className={`fixed max-w-xl w-full bg-slate-100 duration-300 rounded-t-2xl p-6 ${add ? "h-[60vh] bottom-0" : "h-0 -bottom-20"} overflow-hidden`}
+				className={`fixed max-w-xl w-full bg-slate-100 duration-300 rounded-t-2xl p-6 ${update ? "h-[60vh] bottom-0" : "h-0 -bottom-20"} overflow-hidden`}
 			>
 				<div className="flex justify-between items-center">
-					<h3 className="font-bold text-lg">Add Contact</h3>
+					<h3 className="font-bold text-lg">Update Contact</h3>
 					<div>
 						<button
 							type="button"
 							className="bg-white hover:bg-slate-200 duration-300 h-8 w-8 flex justify-center items-center rounded-lg aspect-square"
 							onClick={() => {
-								dispatch(changeContact({ add: false }));
+								dispatch(changeContactUpdate({ update: false }));
 								reset();
 							}}
 						>
@@ -162,7 +174,7 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 								className="h-12 bg-slate-800 border w-full flex-1 rounded-xl p-2 focus:ring-0 focus:outline-none text-slate-300 text-base"
 								type="submit"
 							>
-								Create New
+								Update
 							</button>
 						</div>
 					</div>
@@ -172,4 +184,4 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 	);
 };
 
-export default CreateContact;
+export default UpdateContact;

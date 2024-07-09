@@ -11,9 +11,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
+import UpdateContact from "./Section/CreateContact";
+import { useDispatch } from "react-redux";
+import { changeContactUpdate } from "@/shared/slice/contact";
 
 export default function ScreenGetOne({ slug }: { slug: string }) {
-	const { data, isLoading, isError } = useData<ContactResultsType>(
+	const dispatch = useDispatch();
+	const { data, isLoading, isError, mutate } = useData<ContactResultsType>(
 		`${Endpoint.contact_show}/${slug}`,
 		{
 			method: "GET",
@@ -60,6 +64,7 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 					</h2>
 					<button
 						type="button"
+						onClick={() => dispatch(changeContactUpdate({ update: true }))}
 						className="bg-slate-200 hover:bg-slate-300 duration-300 aspect-square w-8 rounded-lg"
 					>
 						<Icon icon="fluent:people-edit-32-regular" className="text-2xl" />
@@ -70,6 +75,7 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 					<div>Delete</div>
 				</div>
 			</div>
+			<UpdateContact item={item} callbackSubmit={mutate} />
 		</div>
 	);
 }
