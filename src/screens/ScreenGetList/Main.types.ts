@@ -13,4 +13,4 @@ export type ContactResultsType = {
 
 export type GroupedContacts = {
 	[key: string]: ContactDataType[];
-}
+};
