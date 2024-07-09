@@ -6,14 +6,14 @@ import GetInitialAvatar from "@/hooks/initial-avatar";
 import IsValidImageUrl from "@/hooks/valid-image";
 import { Endpoint } from "@/services/endpoint";
 import useData from "@/services/useData";
+import { changeContactUpdate } from "@/shared/slice/contact";
 import { Icon } from "@iconify-icon/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useDispatch } from "react-redux";
 import type { ContactDataType, ContactResultsType } from "./Main.types";
 import UpdateContact from "./Section/CreateContact";
-import { useDispatch } from "react-redux";
-import { changeContactUpdate } from "@/shared/slice/contact";
 
 export default function ScreenGetOne({ slug }: { slug: string }) {
 	const dispatch = useDispatch();
