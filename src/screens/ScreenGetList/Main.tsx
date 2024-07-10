@@ -28,7 +28,7 @@ export default function ScreenGetList() {
 		{
 			method: "GET",
 		},
-		0
+		0,
 	);
 
 	// Buat array alfabet A-Z

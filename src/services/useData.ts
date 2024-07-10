@@ -26,7 +26,11 @@ const fetcher = async <T>(
 	return response.data;
 };
 
-const useData = <T>(url: string, options?: FetchOptions, dedupingInterval = 60000) => {
+const useData = <T>(
+	url: string,
+	options?: FetchOptions,
+	dedupingInterval = 60000,
+) => {
 	const { data, error, mutate } = useSWR<T>(
 		[url, options],
 		([url, options]) => fetcher<T>(url, options ?? {}),
