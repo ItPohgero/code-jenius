@@ -1,5 +1,5 @@
-import IsValidImageUrl from "@/hooks/valid-image";
 import { expect, test } from "bun:test";
+import IsValidImageUrl from "@/hooks/valid-image";
 
 test("Valid image URLs", () => {
 	expect(IsValidImageUrl("http://example.com/image.jpg")).toBe(true);

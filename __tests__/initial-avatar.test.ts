@@ -1,5 +1,5 @@
-import GetInitialAvatar from "@/hooks/initial-avatar";
 import { expect, test } from "bun:test";
+import GetInitialAvatar from "@/hooks/initial-avatar";
 
 test("Get initials for full names", () => {
 	expect(GetInitialAvatar("Wahyu", "Agus")).toBe("WA");
