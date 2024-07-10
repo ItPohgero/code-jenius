@@ -10,7 +10,8 @@
 		"biome:lint": "bunx @biomejs/biome lint --write .",
 		"biome:check": "bunx @biomejs/biome check --write .",
 		"biome:format": "bunx @biomejs/biome format --write .",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "bun test --watch"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.2.6",
