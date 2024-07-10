@@ -80,14 +80,18 @@ const UpdateContact = ({
 								id="firstName"
 								{...register("firstName", {
 									required: "First Name Required",
-									min: {
+									minLength: {
 										value: 3,
 										message: "Minimum 3 characters",
 									},
-									max: {
+									maxLength: {
 										value: 20,
 										message: "Maximum 20 characters",
 									},
+									pattern: {
+										value: /^[^\s]*$/,
+										message: "No spaces allowed",
+									}
 								})}
 								placeholder="First Name"
 								type="text"
@@ -107,14 +111,18 @@ const UpdateContact = ({
 								id="lastName"
 								{...register("lastName", {
 									required: "Last Name Required",
-									min: {
+									minLength: {
 										value: 3,
 										message: "Minimum 3 characters",
 									},
-									max: {
+									maxLength: {
 										value: 20,
 										message: "Maximum 20 characters",
 									},
+									pattern: {
+										value: /^[^\s]*$/,
+										message: "No spaces allowed",
+									}
 								})}
 								placeholder="Last Name"
 								type="text"
