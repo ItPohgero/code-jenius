@@ -80,8 +80,8 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 										message: "Maximum 20 characters",
 									},
 									pattern: {
-										value: /^[^\s]*$/,
-										message: "No spaces allowed",
+										value: /^[a-zA-Z]+$/,
+										message: "Only letters are allowed, no spaces",
 									},
 								})}
 								placeholder="First Name"
@@ -111,8 +111,8 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 										message: "Maximum 20 characters",
 									},
 									pattern: {
-										value: /^[^\s]*$/,
-										message: "No spaces allowed",
+										value: /^[a-zA-Z]+$/,
+										message: "Only letters are allowed, no spaces",
 									},
 								})}
 								placeholder="Last Name"
