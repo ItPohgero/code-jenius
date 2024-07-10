@@ -137,6 +137,10 @@ const CreateContact = ({ callbackSubmit }: { callbackSubmit: () => void }) => {
 										value: /^[0-9]*$/,
 										message: "Please enter only digits",
 									},
+									maxLength: {
+										value: 2,
+										message: "Maximum 2 characters",
+									},
 								})}
 								placeholder="Age"
 								type="number"
