@@ -66,7 +66,7 @@ export default function ScreenGetOne({ slug }: { slug: string }) {
 							className="aspect-square object-cover rounded-full"
 						/>
 					) : (
-						<div className="bg-slate-200 w-[100px] h-[100px] aspect-square rounded-full flex justify-center items-center font-bold">
+						<div className="bg-slate-200 w-[100px] h-[100px] aspect-square rounded-full flex justify-center items-center font-bold text-3xl">
 							{GetInitialAvatar(item?.firstName || "", item?.lastName || "")}
 						</div>
 					)}
