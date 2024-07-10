@@ -91,7 +91,7 @@ const UpdateContact = ({
 									pattern: {
 										value: /^[^\s]*$/,
 										message: "No spaces allowed",
-									}
+									},
 								})}
 								placeholder="First Name"
 								type="text"
@@ -122,7 +122,7 @@ const UpdateContact = ({
 									pattern: {
 										value: /^[^\s]*$/,
 										message: "No spaces allowed",
-									}
+									},
 								})}
 								placeholder="Last Name"
 								type="text"
