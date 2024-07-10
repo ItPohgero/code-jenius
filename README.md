@@ -22,5 +22,4 @@ Husky improves your commits and more 🐶 woof!
 A utility-first CSS framework
 
 
-Thanks
 Wahyu Agus Arifin
